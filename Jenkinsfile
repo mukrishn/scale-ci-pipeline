@@ -3,12 +3,12 @@
 def contact = "nelluri@redhat.com"
 def watcher = SCALE_CI_WATCHER.toString().toUpperCase()
 def pipeline = PIPELINE.toString().toUpperCase()
-def stage_two = env.STAGE_TWO.toString().toUpperCase() ?: "FALSE"
-def stage_three = env.STAGE_THREE.toString().toUpperCase() ?: "FALSE"
-def stage_four = env.STAGE_FOUR.toString().toUpperCase() ?: "FALSE"
-def stage_five = env.STAGE_FIVE.toString().toUpperCase() ?: "FALSE"
-def stage_six = env.STAGE_SIX.toString().toUpperCase() ?: "FALSE"
-def webfuse_install = env.WEBFUSE_INSTALL.toString().toUpperCase() ?: "FALSE"
+def stage_two = env.STAGE_TWO.toString().toUpperCase() ?: ""
+def stage_three = env.STAGE_THREE.toString().toUpperCase() ?: ""
+def stage_four = env.STAGE_FOUR.toString().toUpperCase() ?: ""
+def stage_five = env.STAGE_FIVE.toString().toUpperCase() ?: ""
+def stage_six = env.STAGE_SIX.toString().toUpperCase() ?: ""
+def webfuse_install = env.WEBFUSE_INSTALL.toString().toUpperCase() ?: ""
 def build_tracker = SCALE_CI_BUILD_TRACKER.toString().toUpperCase()
 def tooling = TOOLING.toString().toUpperCase()
 def run_conformance = CONFORMANCE.toString().toUpperCase()
@@ -88,20 +88,20 @@ node (node_label) {
 			env.WORKLOAD="SCALE-CI-MS-OSDE2E"
 			load "pipeline-scripts/workload.groovy"
 		}
-		// if (openshiftv4_install_on_bm == "TRUE") {
-		// 	println("----------------------------------------------webfuse variable print-----------------------------------------------")
-		// 	println(webfuse_install)
-		// 	println(stage_two)
-		// 	println(stage_three)
-		// 	println(stage_four)
-		// 	println(stage_five)
-		// 	println(openshiftv4_install_on_bm)
-		// 	println(pipeline)
-		// 	println("----------------------------------------------webfuse variable print-----------------------------------------------")
-		// 	env.WORKLOAD_PROPERTIES_FILE=OPENSHIFTv4_ON_BM_PROPERTY_FILE
-		// 	env.WORKLOAD="ATS-SCALE-CI-OCP-BM-DEPLOY"
-		// 	load "pipeline-scripts/workload.groovy"
-		// }
+		if (openshiftv4_install_on_bm == "TRUE") {
+			println("----------------------------------------------webfuse variable print-----------------------------------------------")
+			println(webfuse_install)
+			println(stage_two)
+			println(stage_three)
+			println(stage_four)
+			println(stage_five)
+			println(openshiftv4_install_on_bm)
+			println(pipeline)
+			println("----------------------------------------------webfuse variable print-----------------------------------------------")
+			env.WORKLOAD_PROPERTIES_FILE=OPENSHIFTv4_ON_BM_PROPERTY_FILE
+			env.WORKLOAD="ATS-SCALE-CI-OCP-BM-DEPLOY"
+			load "pipeline-scripts/workload.groovy"
+		}
 
 		if (webfuse_install == "TRUE") {
 			if (openshiftv4_install_on_bm == "TRUE") {
