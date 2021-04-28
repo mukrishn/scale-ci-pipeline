@@ -88,20 +88,20 @@ node (node_label) {
 			env.WORKLOAD="SCALE-CI-MS-OSDE2E"
 			load "pipeline-scripts/workload.groovy"
 		}
-		if (openshiftv4_install_on_bm == "TRUE") {
-			println("----------------------------------------------webfuse variable print-----------------------------------------------")
-			println(webfuse_install)
-			println(stage_two)
-			println(stage_three)
-			println(stage_four)
-			println(stage_five)
-			println(openshiftv4_install_on_bm)
-			println(pipeline)
-			println("----------------------------------------------webfuse variable print-----------------------------------------------")
-			env.WORKLOAD_PROPERTIES_FILE=OPENSHIFTv4_ON_BM_PROPERTY_FILE
-			env.WORKLOAD="ATS-SCALE-CI-OCP-BM-DEPLOY"
-			load "pipeline-scripts/workload.groovy"
-		}
+		// if (openshiftv4_install_on_bm == "TRUE") {
+		// 	println("----------------------------------------------webfuse variable print-----------------------------------------------")
+		// 	println(webfuse_install)
+		// 	println(stage_two)
+		// 	println(stage_three)
+		// 	println(stage_four)
+		// 	println(stage_five)
+		// 	println(openshiftv4_install_on_bm)
+		// 	println(pipeline)
+		// 	println("----------------------------------------------webfuse variable print-----------------------------------------------")
+		// 	env.WORKLOAD_PROPERTIES_FILE=OPENSHIFTv4_ON_BM_PROPERTY_FILE
+		// 	env.WORKLOAD="ATS-SCALE-CI-OCP-BM-DEPLOY"
+		// 	load "pipeline-scripts/workload.groovy"
+		// }
 
 		if (webfuse_install == "TRUE") {
 			if (openshiftv4_install_on_bm == "TRUE") {
